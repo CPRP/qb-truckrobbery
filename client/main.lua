@@ -308,7 +308,13 @@ Citizen.CreateThread(function()
                 if GuardsDead == 0 then
                     CheckGuards()
                 elseif GuardsDead == 1 and BlownUp == 0 then
-                    AlertPolice()
+                    if not AlertSend then
+                        exports['ps-dispatch']:ArmoredTruckRobbery(vehicle)
+                        AlertSend = true
+                        SetTimeout(math.random(4000,6000), function()
+                            AlertSend = false
+                        end)
+                    end
                 end
 
             else
@@ -322,7 +328,16 @@ Citizen.CreateThread(function()
                 end
                 if IsControlPressed(0, 47) and GuardsDead == 1 then
                     CheckVehicleInformation()
-                    TriggerEvent("qb-armoredtruckheist:client:911alert")
+                    local chance = 50  -- means 50%
+                    if chance <= math.random(1,100) then
+                        if not AlertSend then
+                            exports['ps-dispatch']:ArmoredTruckRobbery(vehicle)
+                            AlertSend = true
+                            SetTimeout(math.random(4000,6000), function()
+                                AlertSend = false
+                            end)
+                        end
+                    end
                     Citizen.Wait(500)
                 end
             end
