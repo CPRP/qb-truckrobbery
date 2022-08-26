@@ -1,9 +1,9 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local ActivePolice = 2  		--<< needed policemen to activate the mission
-local cashA = 250 				--<<how much minimum you can get from a robbery
-local cashB = 450				--<< how much maximum you can get from a robbery
+local cashA = 2500 				--<<how much minimum you can get from a robbery
+local cashB = 16000				--<< how much maximum you can get from a robbery
 local ActivationCost = 500		--<< how much is the activation of the mission (clean from the bank)
-local ResetTimer = 2700 * 1000  --<< timer every how many missions you can do, default is 600 seconds
+local ResetTimer = 1200 * 1000  --<< timer every how many missions you can do, default is 600 seconds
 local ActiveMission = 0
 
 RegisterServerEvent('AttackTransport:akceptujto', function()
